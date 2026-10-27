@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../lib/site';
+---
+
+<Layout title="About" description="A short introduction.">
+  <section class="mx-auto max-w-2xl px-6 pt-16 pb-24">
+    <h1 class="font-serif text-3xl text-ink">About</h1>
+    <div class="prose prose-neutral mt-8 max-w-none">
+      <p>[PLACEHOLDER] A few honest paragraphs — how law, technology, and AI governance connect for you; what draws your attention; how you think. Keep it short and specific, not a résumé restatement.</p>
+    </div>
+    <div class="mt-10 flex gap-5 text-sm text-muted">
+      <a href={`mailto:${SITE.email}`} class="hover:text-ink transition-colors">Email</a>
+      <a href={SITE.linkedin} target="_blank" rel="noopener" class="hover:text-ink transition-colors">LinkedIn ↗</a>
+      <a href={SITE.github} target="_blank" rel="noopener" class="hover:text-ink transition-colors">GitHub ↗</a>
+    </div>
+  </section>
+</Layout>

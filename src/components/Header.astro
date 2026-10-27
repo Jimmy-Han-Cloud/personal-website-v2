@@ -1,0 +1,52 @@
+---
+import { SITE } from '../lib/site';
+import TranslateButton from './TranslateButton.astro';
+
+const navLinks = [
+  { label: 'Work', href: '/work/' },
+  { label: 'Notes', href: '/notes/' },
+  { label: 'About', href: '/about/' },
+];
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-50 border-b border-transparent transition-all duration-200"
+>
+  <div class="mx-auto max-w-5xl px-6 py-5 flex items-center justify-between">
+    <a href="/" class="font-serif text-lg text-ink">{SITE.name}</a>
+    <nav class="flex items-center gap-3 sm:gap-6" aria-label="Primary">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-xs sm:text-sm text-ink hover:text-accent transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={SITE.resumeUrl}
+        target="_blank"
+        rel="noopener"
+        class="text-xs sm:text-sm text-ink hover:text-accent transition-colors"
+      >
+        Resume ↗
+      </a>
+      <TranslateButton />
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    if (!header) return;
+    if (window.scrollY > 24) {
+      header.classList.add('bg-paper/90', 'backdrop-blur', 'border-line', 'shadow-sm');
+    } else {
+      header.classList.remove('bg-paper/90', 'backdrop-blur', 'border-line', 'shadow-sm');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
